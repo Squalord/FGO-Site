@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
-class LoginController extends AbstractController
+class MNSecurityController extends AbstractController
 {
     /**
      * @Route("/login", name="app_login")
@@ -15,7 +15,7 @@ class LoginController extends AbstractController
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         // if ($this->getUser()) {
-        //     return $this->redirectToRoute('Home');
+        //     return $this->redirectToRoute('target_path');
         // }
 
         // get the login error if there is one

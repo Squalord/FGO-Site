@@ -13,7 +13,6 @@
                 <th>Password</th>
                 <th>Email</th>
                 <th>Roles</th>
-                <th>IsActive</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -25,7 +24,6 @@
                 <td>{{ user.password }}</td>
                 <td>{{ user.email }}</td>
                 <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-                <td>{{ user.isActive ? 'Yes' : 'No' }}</td>
                 <td>
                     <a href="{{ path('user_show', {'id': user.id}) }}">show</a>
                     <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>

@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MNNewsController!{% endblock %}
+
+{% block content %}
+    <div class="example-wrapper">
+        <h1>Dernières actualités !</h1>
+
+        {% if news is defined and news is not empty and news is iterable %}
+            <ul>
+                {% for article in news %}
+                    <li>
+                        <h3><a href="{{ url('frontoffice_m_n_news_view', {'news': article.id}) }}" title="Lire la suite">{{ article.title }}</a><h3/>
+                        <div class="news-date">Publié le {{ article.createdAt|date('d/m/Y à h:i') }}</div>
+                        <div class="news-content">
+                            {{ article.body|striptags|slice(0,150)|raw }}[...]
+                        </div>
+                        <div class="news-category">
+                            {% if article.category is defined %}
+                                Publié dans <a href="{{ url('frontoffice_m_n_news_category', {'category': article.category.id}) }}" title="Catégorie : {{ article.category.title }}">{{ article.category.title }}</a>.
+                            {% else %}
+                                Ce contenu n'est pas associé à une catégorie.
+                            {% endif %}
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+{% endblock %}
