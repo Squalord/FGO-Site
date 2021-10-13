@@ -27,7 +27,7 @@ class NewsType extends AbstractType
                 [
                     'class' => Category::class,
                     'choice_label' => 'title',
-                ]
+                    ]
             )
         ;
     }
