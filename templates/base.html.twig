@@ -18,27 +18,50 @@
             <nav>
                 <ul>
                     <li> <a href=/> <img src="{{ asset('images/Fate_Grand_Order_Logo.png') }}" alt="Logo_FGO"> </a> </li>
-                    <li> <a href=Contact>Contact</a> </li>
-                    <li> <a href=FunnyStuff>FunnyStuff</a> </li>
-                    <li> <a href=Legend>Legend</a> </li>
-                    <li> <a href=News>News</a> </li>
-                    <li> <a href=PlayOfTheWeek>PlayOfTheWeek</a> </li>
-                    <li> <a href=WorldRecord>WorldRecord</a> </li>
+                    {% if app.user is null or (app.user.roles[0] is defined and app.user.roles[0] == "ROLE_USER") %}
+                        <li> <a href=contact>Contact</a> </li>
+                        <li> <a href=funnystuff>FunnyStuff</a> </li>
+                        <li> <a href=legend>Legend</a> </li>
+                        <li> <a href=news>News</a> </li>
+                        <li> <a href=/admin/challengeQuest>Challenge Quest</a> </li>
+                        <li> <a href=/admin/challengeSolo>Challenge Solo</a> </li>
                     <!-- Vérifier si la personne est connecté et mettre Connexion/Déconnexion -->
-                        <li> <a href=login>Connexion</a> </li>
+                        {% if app.user is null %}
+                            <li> <a href=/login>Connexion</a> </li>
+                        {% endif %}
+                    {% endif %}
+
+                    {% if app.user != null %}
+                        {% if app.user.roles[1] is defined and app.user.roles[1] == "ROLE_ADMIN" %}
+                            <li><a href=/admin/user>Users</a></li>
+                            <li> <a href=/admin/contact>Contact</a> </li>
+                            <li> <a href=/admin/funnystuff>FunnyStuff</a> </li>
+                            <li> <a href=/admin/legend>Legend</a> </li>
+                            <li> <a href=/admin/news>News</a> </li>
+                            <li> <a href=/admin/challengeQuest>Challenge Quest</a> </li>
+                            <li> <a href=/admin/challengeSolo>Challenge Solo</a> </li>
+                        {% endif %}
+                    {% endif %}
+
+                    {% if app.user != null %}
+                        <li>
+                            <p> Welcome {{ app.user.username }} </p>
+                            <a href="{{ path('app_logout') }}">Logout</a>
+                        </li>
+                    {% endif %}
+
                 </ul>
             </nav>
         {% endblock %}
 
         {% block content %}
-            {{dump(app.user)}}
         {% endblock %}
 
     </body>
-    
-    <footer> 
+
+    <footer>
         {% block footer %}
-            
+
         {% endblock %}
     </footer>
 </html>

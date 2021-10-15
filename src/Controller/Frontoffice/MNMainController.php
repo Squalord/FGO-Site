@@ -36,14 +36,6 @@ class MNMainController extends AbstractController
     }
 
     /**
-     * @Route("/Contact")
-     */
-    public function contact(): Response 
-    {
-        return new Response('Contact page');
-    }
-
-    /**
      * @Route("/FunnyStuff")
      */
     public function funnyStuff(): Response 
@@ -57,14 +49,6 @@ class MNMainController extends AbstractController
     public function legend(): Response 
     {
         return new Response('Legend page');
-    }
-
-    /**
-     * @Route("/News")
-     */
-    public function news(): Response 
-    {
-        return new Response('News page');
     }
 
     /**
