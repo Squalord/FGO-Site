@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MNFunnystuffController!{% endblock %}
+
+{% block content %}
+    <div class="funnystuffs-container">
+        {% if funnystuffs is defined and funnystuffs is not empty %}
+
+            <h1>{{ funnystuffs.title }}</h1>
+
+            <p>
+                Revenir à <a href="{{ url('frontoffice_m_n_funnystuffs') }}" title="Revenir à la liste des funnystuffs">liste des funnystuffs</a>.
+            </p>
+            
+            <p>
+                Revenir à <a href="{{ url('frontoffice_m_n_funnystuffs_category', {'category': funnystuffs.category.id}) }}" title="Revenir à la liste des funnystuffs">la catégorie {{ funnystuffs.category.title }}</a>.
+            </p>
+
+            <div class="funnystuffs-date">Publié le {{ funnystuffs.createdAt|date('d/m/Y à h:i') }}</div>
+
+            <div class="funnystuffs-content">
+                {{ funnystuffs.body|raw }}
+            </div>
+
+            <div class="funnystuffs-category">
+                {% if funnystuffs.category is defined %}
+                    Publié dans <a href="{{ url('frontoffice_m_n_funnystuffs_category', {'category': funnystuffs.category.id}) }}" title="Catégorie : {{ funnystuffs.category.title }}">{{ funnystuffs.category.title }}</a>.
+                {% else %}
+                    Ce contenu n'est pas associé à une catégorie.
+                {% endif %}
+            </div>
+                   
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MNFunnystuffController!{% endblock %}
+
+{% block content %}
+    <div class="example-wrapper">
+        <h1>Derniers contenus{% if category is defined %} parues dans {{ category.title }}{% endif %}</h1>
+
+        <p>
+            Revenir à <a href="{{ url('frontoffice_m_n_funnystuffs') }}" title="Revenir à la liste des funnystuffs">liste des funnystuffs</a>.
+        </p>
+
+        {% if funnystuffs is defined and funnystuffs is not empty and funnystuffs is iterable %}
+            <ul>
+                {% for article in funnystuffs %}
+                    <li>
+                        <h3>{{ article.title }}</h3>
+                        <div class="funnystuffs-date">Publié le {{ article.createdAt|date('d/m/Y à h:i') }}</div>
+                        <div class="funnystuffs-content">
+                            {{ article.body|raw }}
+                        </div>
+                        <div class="funnystuffs-category">
+                            {% if article.category.title is defined %}
+                                Publié dans {{ article.category.title }}.
+                            {% else %}
+                                Ce contenu n'est pas associé à une catégorie.
+                            {% endif %}
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+{% endblock %}

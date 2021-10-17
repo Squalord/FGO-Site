@@ -40,9 +40,15 @@ class Category
      */
     private $updatedAt;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Funnystuffs::class, mappedBy="category")
+     */
+    private $funnystuffs;
+
     public function __construct()
     {
         $this->news = new ArrayCollection();
+        $this->funnystuffs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -131,5 +137,35 @@ class Category
     public function setUpdatedAtValue(): void
     {
         $this->updatedAt = new \DateTimeImmutable();
+    }
+
+    /**
+     * @return Collection|Funnystuffs[]
+     */
+    public function getFunnystuffs(): Collection
+    {
+        return $this->funnystuffs;
+    }
+
+    public function addFunnystuff(Funnystuffs $funnystuff): self
+    {
+        if (!$this->funnystuffs->contains($funnystuff)) {
+            $this->funnystuffs[] = $funnystuff;
+            $funnystuff->setCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFunnystuff(Funnystuffs $funnystuff): self
+    {
+        if ($this->funnystuffs->removeElement($funnystuff)) {
+            // set the owning side to null (unless already changed)
+            if ($funnystuff->getCategory() === $this) {
+                $funnystuff->setCategory(null);
+            }
+        }
+
+        return $this;
     }
 }
