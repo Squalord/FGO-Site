@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MNChallengequestController!{% endblock %}
+
+{% block content %}
+    <div class="example-wrapper">
+        <h1>Derniers challenge quests !</h1>
+
+        {% if challengequests is defined and challengequests is not empty and challengequests is iterable %}
+            <ul>
+                {% for article in challengequests %}
+                    <li>
+                        <h3><a href="{{ url('frontoffice_m_n_challengequest_view', {'challengequest': article.id}) }}" title="Lire la suite">{{ article.title }}</a></h3>
+                        <div class="challengequest-date">Publié le {{ article.createdAt|date('d/m/Y à h:i') }}</div>
+                        <div class="challengequest-content">
+                            {{ article.body|striptags|slice(0,150)|raw }}[...]
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+{% endblock %}

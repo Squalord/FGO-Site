@@ -66,9 +66,9 @@ nav ul li a{
 	font-size: 163%;
 }
 
-nav ul li a img {
-	height: 100%;
+nav ul a img {
 	width: 33%;
+	float:left;
 }
 
 #spacer {

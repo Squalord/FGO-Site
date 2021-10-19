@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MNChallengequestController!{% endblock %}
+
+{% block content %}
+    <div class="challengequest-container">
+        {% if challengequest is defined and challengequest is not empty %}
+
+            <h1>{{ challengequest.title }}</h1>
+
+            <p>
+                Revenir à <a href="{{ url('frontoffice_m_n_challengequest') }}" title="Revenir à la liste des challenge quests">liste des challenge quests</a>.
+            </p>
+
+            <div class="challengequest-date">Publié le {{ challengequest.createdAt|date('d/m/Y à h:i') }}</div>
+
+            <div class="challengequest-content">
+                {{ challengequest.body|raw }}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
