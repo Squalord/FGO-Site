@@ -7,12 +7,12 @@
         <h1>Derniers contenus{% if servantClass is defined %} parues dans {{ servantClass.title }}{% endif %}</h1>
 
         <p>
-            Revenir à <a href="{{ url('frontoffice_m_n_servantClass') }}" title="Revenir à la liste des classes">liste des classes</a>.
-        </p>
-
-        {% if news is defined and news is not empty and news is iterable %}
+            Revenir à <a href="{{ url('mn_throne_of_heroes') }}" title="Revenir à la liste des servants">liste des servants</a>.
+            </p>
+            {{ dump(servantClass) }}
+        {% if servantClass is defined and servantClass is not empty and servantClass is iterable %}
             <ul>
-                {% for article in news %}
+                {% for article in servantClass %}
                     <li>
                         <h3>{{ article.title }}</h3>
                         <div class="servantClass-date">Publié le {{ article.createdAt|date('d/m/Y à h:i') }}</div>

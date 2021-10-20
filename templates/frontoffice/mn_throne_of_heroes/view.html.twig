@@ -13,7 +13,7 @@
             </p>
             
             <p>
-                Revenir à <a href="{{ url('frontoffice_m_n_throneOfHeroes_servantClass', {'servantClass': throneOfHeroes.servantClass.id}) }}" title="Revenir à la liste des servants">la classe {{ throneOfHeroes.servantClass.title }}</a>.
+                Revenir à <a href="{{ url('frontoffice_mn_throne_of_heroes_servantClass', {'servantClass': throneOfHeroes.servantClass.id}) }}" title="Revenir à la liste des servants">la classe {{ throneOfHeroes.servantClass.title }}</a>.
             </p>
 
             <div class="throneOfHeroes-content">
@@ -22,7 +22,7 @@
 
             <div class="throneOfHeroes-servantClass">
                 {% if throneOfHeroes.servantClass is defined %}
-                    Publié dans <a href="{{ url('frontoffice_m_n_throneOfHeroes_servantClass', {'servantClass': throneOfHeroes.servantClass.id}) }}" title="ServantClass" : {{ throneOfHeroes.servantClass.title }}">{{ throneOfHeroes.servantClass.title }}</a>.
+                    Publié dans <a href="{{ url('frontoffice_mn_throne_of_heroes_servantClass', {'servantClass': throneOfHeroes.servantClass.id}) }}" title="ServantClass" : {{ throneOfHeroes.servantClass.title }}">{{ throneOfHeroes.servantClass.title }}</a>.
                 {% else %}
                     Ce contenu n'est pas associé à une classe.
                 {% endif %}

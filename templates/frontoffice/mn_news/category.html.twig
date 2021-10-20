@@ -15,11 +15,11 @@
                 {% for article in news %}
                     <li>
                         <h3>{{ article.title }}</h3>
-                        <div class="funnystuffs-date">Publié le {{ article.createdAt|date('d/m/Y à h:i') }}</div>
-                        <div class="funnystuffs-content">
+                        <div class="news-date">Publié le {{ article.createdAt|date('d/m/Y à h:i') }}</div>
+                        <div class="news-content">
                             {{ article.body|raw }}
                         </div>
-                        <div class="funnystuffs-category">
+                        <div class="news-category">
                             {% if article.category.title is defined %}
                                 Publié dans {{ article.category.title }}.
                             {% else %}
