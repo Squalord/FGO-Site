@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MNThroneOfHeroesController!{% endblock %}
+
+{% block content %}
+    <div class="example-wrapper">
+        <h1>Page des servants !</h1>
+        {% if throneOfHeroes is defined and throneOfHeroes is not empty and throneOfHeroes is iterable %}
+            <ul>
+                {% for article in throneOfHeroes %}
+                    <li>
+                        <h3><a href="{{ url('frontoffice_mn_throne_of_heroes_view', {'throneOfHeroes': article.id}) }}" title="Lire la suite">{{ article.name }}</a></h3>
+                        <div class="ThroneOfHeroes-content">
+                            {{ article.noblePhantasm|striptags|slice(0,150)|raw }}[...]
+                        </div>
+                        <div class="ThroneOfHeroes-servantClass">
+                            {% if article.servantClass is defined %}
+                                Publié dans <a href="{{ url('frontoffice_mn_throne_of_heroes_servantClass', {'servantClass': article.servantClass.id}) }}" title="ServantClass : {{ article.servantClass.title }}">{{ article.servantClass.title }}</a>.
+                            {% else %}
+                                Ce contenu n'est pas associé à une classe.
+                            {% endif %}
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+{% endblock %}

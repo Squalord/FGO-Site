@@ -21,7 +21,7 @@
                     {% if app.user is null or (app.user.roles[0] is defined and app.user.roles[0] == "ROLE_USER") %}
                         <li> <a href=/contact>Contact</a> </li>
                         <li> <a href=/funnystuff>FunnyStuff</a> </li>
-                        <li> <a href=/legend>Legend</a> </li>
+                        <li> <a href=/throne_of_heroes>Throne of heroes</a> </li>
                         <li> <a href=/news>News</a> </li>
                         <li> <a href=/challengeQuest>Challenge Quest</a> </li>
                         <li> <a href=/challengeSolo>Challenge Solo</a> </li>
@@ -34,8 +34,10 @@
                     {% if app.user != null %}
                         {% if app.user.roles[1] is defined and app.user.roles[1] == "ROLE_ADMIN" %}
                             <li><a href=/admin/user>Users</a></li>
+                            <li><a href=/admin/category>Category</a></li>
+                            <li><a href=/admin/servant_class>Class</a></li>
                             <li> <a href=/admin/funnystuff>FunnyStuff</a> </li>
-                            <li> <a href=/admin/legend>Legend</a> </li>
+                            <li> <a href=/admin/throne_of_heroes>Throne of heroes</a> </li>
                             <li> <a href=/admin/news>News</a> </li>
                             <li> <a href=/admin/challengeQuest>Challenge Quest</a> </li>
                             <li> <a href=/admin/challengeSolo>Challenge Solo</a> </li>

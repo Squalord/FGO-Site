@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MNServantClassController!{% endblock %}
+
+{% block content %}
+    <div class="example-wrapper">
+        <h1>Derniers contenus{% if servantClass is defined %} parues dans {{ servantClass.title }}{% endif %}</h1>
+
+        <p>
+            Revenir à <a href="{{ url('frontoffice_m_n_servantClass') }}" title="Revenir à la liste des classes">liste des classes</a>.
+        </p>
+
+        {% if news is defined and news is not empty and news is iterable %}
+            <ul>
+                {% for article in news %}
+                    <li>
+                        <h3>{{ article.title }}</h3>
+                        <div class="servantClass-date">Publié le {{ article.createdAt|date('d/m/Y à h:i') }}</div>
+                        <div class="servantClass-content">
+                            {{ article.body|raw }}
+                        </div>
+                        <div class="servantClass-category">
+                            {% if article.servantClass.title is defined %}
+                                Publié dans {{ article.servantClass.title }}.
+                            {% else %}
+                                Ce contenu n'est pas associé à une catégorie.
+                            {% endif %}
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+{% endblock %}
