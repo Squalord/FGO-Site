@@ -9,26 +9,24 @@
         <p>
             Revenir à <a href="{{ url('mn_throne_of_heroes') }}" title="Revenir à la liste des servants">liste des servants</a>.
             </p>
-            {{ dump(servantClass) }}
-        {% if servantClass is defined and servantClass is not empty and servantClass is iterable %}
+         {% if throne_of_heroes is defined and throne_of_heroes is not empty and throne_of_heroes is iterable %}
             <ul>
-                {% for article in servantClass %}
+                {% for article in throne_of_heroes %}
                     <li>
-                        <h3>{{ article.title }}</h3>
-                        <div class="servantClass-date">Publié le {{ article.createdAt|date('d/m/Y à h:i') }}</div>
+                        <h3>{{ article.name }}</h3>
                         <div class="servantClass-content">
-                            {{ article.body|raw }}
+                            {{ article.noblePhantasm|raw }}
                         </div>
                         <div class="servantClass-category">
                             {% if article.servantClass.title is defined %}
                                 Publié dans {{ article.servantClass.title }}.
                             {% else %}
-                                Ce contenu n'est pas associé à une catégorie.
+                                Ce contenu n'est pas associé à une classe.
                             {% endif %}
                         </div>
                     </li>
                 {% endfor %}
             </ul>
-        {% endif %}
+         {% endif %}
     </div>
 {% endblock %}
